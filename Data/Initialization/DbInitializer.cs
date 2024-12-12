@@ -112,7 +112,7 @@ public static class DbInitializer
             NormalizedEmail = adminEmail.ToUpper(),
             EmailConfirmed = true,
             AvatarName = "admin-icon.png",
-            AvatarPath = "DefaultFiles/admin-icon.png",
+            AvatarPath = "default/admin-icon.png",
         };
 
         var result = await userManager.CreateAsync(adminUser, adminPassword);
