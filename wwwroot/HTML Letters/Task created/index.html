@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive HTML Task Notification Template</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 100px 0;
+      background-color: #f6f9fc;
+    }
+
+    table {
+      border-spacing: 0;
+    }
+
+    td {
+      padding: 20px;
+    }
+
+    img {
+      border: 0;
+    }
+
+    .wrapper {
+      width: 100%;
+      background-color: #f6f9fc;
+      table-layout: fixed;
+      padding-bottom: 40px;
+    }
+
+    .outer {
+      max-width: 600px;
+      background-color: #ffffff;
+    }
+
+    .main {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 600px;
+      border-spacing: 0;
+      font-family: sans-serif;
+      color: #4a4a4a;
+    }
+
+    .social {
+      padding-right: 5px;
+    }
+
+    .three-columns {
+      text-align: center;
+      padding-top: 40px;
+      padding-bottom: 30px;
+      font-size: 0;
+    }
+
+    .three-columns .column {
+      width: 100%;
+      max-width: 200px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .padding {
+      padding: 15px;
+    }
+
+    .content {
+      font-size: 15px;
+      line-height: 20px;
+    }
+
+    a {
+      color: #378bda;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .phone {
+      display: none;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        background-color: white;
+        padding: 0;
+      }
+
+      .phone {
+        display: block;
+      }
+
+      .pc {
+        display: none;
+      }
+
+      img.third-img-last {
+        width: 200px !important;
+        max-width: 200px !important;
+      }
+
+      .padding {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      img.third-img {
+        width: 200px !important;
+        max-width: 200px !important;
+      }
+    }
+  </style>
+</head>
+<body style='@media (max-width: 600px) { background-color: white;padding: 0; } @media (min-width: 601px) { margin: 0; padding: 100px 0; background-color: #f6f9fc; }'>
+<center class="wrapper">
+  <div class="outer">
+    <table class="main" align="center">
+      <tr class="pc" style="width: 100%;">
+        <td>
+          <table>
+            <td align="center" style="padding: 0; padding-right: 20px;cursor:pointer">
+              <img src="https://i.ibb.co/0m4w8jp/logo.png" alt="Logo" width="80%" />
+            </td>
+          </table>
+        </td>
+      </tr>
+
+
+
+
+      <tr class="phone">
+        <td align="left">
+          <img src="https://efgkzli.stripocdn.email/content/guids/CABINET_4509dc5c87b2be9596a7b1f311cebdc089ec207dfe9f831ccdd524baee66c324/images/logo_baim_x68.png" alt="" width="560" class="adapt-img" />
+        </td>
+      </tr>
+
+      <tr>
+        <td align="center" bgcolor="#178e89" style=" text-align: center;background-color: #24aaa4;">
+          <h1 align="center" style="color:#ffffff; text-align: center;">Уведомление о задаче</h1>
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td align="left">
+          <h2 style="color:#333333">Здравствуйте!</h2><p style="color:#333333">
+          Для вас создали задачу, пожалуйста, зайдите и проверьте на вашем аккаунте. Если не получается перейти, просим вас обратиться к нам.</p>
+        </td>
+      </tr>
+
+
+
+
+      <tr style="width: 100%;">
+        <td align="center">
+          <img src="https://i.ibb.co/ctcHmpp/image.png" alt="Tasks" width="80%" class="adapt-img" />
+        </td>
+      </tr>
+
+      <tr>
+        <td align="center">
+          <a href="{{Link}}" class="btn" style="cursor:pointer; color: #ffffff; border-radius: 20px; padding: 10px 20px; margin-top: 20px; text-decoration: none;">
+            <div style="border: 1px solid #178e89;background-color: #178e89; color: #ffffff; border-radius: 20px; padding: 10px 20px; margin-top: 20px;">Перейти к задаче</div>
+          </a>
+        </td>
+      </tr>
+
+
+
+  
+      <tr>
+        <td align="left"> 
+          <p>Не получилось перейти с кнопки?<br />Воспользуйтесь ссылкой: <a href="{{Link}}" target="_blank" style="color:#61c4f2">Посмотреть на задачу</a></p>
+          <p>Не нравится что вам приходят уведомления на почту ? 
+          <br/>Отключить уведомления перейдя по ссылке: <a href="{{Link}}" target="_blank" style="color:#61c4f2">Отключить уведомления</a></p> 
+          <p style="color:#333333">Если не получается перейти, обратитесь к нам: <a style="color: #61c4f2; " href="tel:+994555292966">+994555292966</a> </p>
+        </td>
+      </tr>
+      <tr style="border-top: 1px solid #178e89;">
+        <td style="border-top: 2px solid #178e89; display: flex; justify-content: space-evenly;" align="center">
+
+          <a href="#" style="text-decoration: none;">
+            <div class="icon facebook" style="height: 30px; width: 30px; box-sizing: border-box; background-image: url(https://i.ibb.co/NLkwWK1/fb.png); background-position: center; background-size: cover; margin: 10px; padding: 0;"></div>
+          </a>
+          <a href="https://www.instagram.com/baim_1c/" style="text-decoration: none;">
+            <div class="icon instagram" style="height: 30px; width: 30px; box-sizing: border-box; background-image: url(https://i.ibb.co/2s45kGF/insta.png); background-position: center; background-size: cover; margin: 10px; padding: 0;"></div>
+          </a>
+          <a href="#" style="text-decoration: none;">
+            <div class="icon youtube" style="height: 30px; width: 30px; box-sizing: border-box; background-image: url(https://i.ibb.co/rGcNNg0/youtube.png); background-position: center; background-size: cover; margin: 10px; padding: 0;"></div>
+          </a>
+          <a href="#" style="text-decoration: none;">
+            <div class="icon telegram" style="height: 30px; width: 30px; box-sizing: border-box; background-image: url(https://i.ibb.co/gzNJQqW/telegram.png); background-position: center; background-size: cover; margin: 10px; padding: 0;"></div>
+          </a>
+
+        </td>
+      </tr> 
+
+      <tr>
+        <td style="background-color: #178e89">
+          <table width="100%">
+            <tr>
+              <td style="
+                      padding: 20px;
+                      text-align: center;
+                      padding-bottom: 10px;
+                    ">
+
+                <p style="
+                        color:#ffffff;
+                        font-size: 16px;
+                        margin-top: 18px;
+                        margin-bottom: 10px;
+                      ">
+                  Biznesin Avtomatlaşdırma və İnkişaf Mərkəzi
+                </p>
+                <p style="color:#ffffff">Füzuli küç 49 "Füzuli Residence" Biznes Mərkəzi</p>
+                <p style="color:#ffffff">
+                  <a style="color:#ffffff" href="tel:+994555292966">+994555292966</a>
+                </p>
+                <p style="color:#ffffff">
+                  <a style="color:#ffffff" href="mailto:office@baim.az">office@baim.az</a>
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</center>
+</body>
+</html>
