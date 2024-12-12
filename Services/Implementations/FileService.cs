@@ -76,10 +76,10 @@ public class FileService : IFileService
 
         var roleFolder = role switch
         {
-            "Admin" => "Admin\\ProfilePhotos",
-            "UserAdmin" => "UserAdmin\\ProfilePhotos",
-            "Staff" => "Staff\\ProfilePhotos",
-            _ => "User\\ProfilePhotos"
+            "Admin" => "Admin/ProfilePhotos",
+            "UserAdmin" => "UserAdmin/ProfilePhotos",
+            "Staff" => "Staff/ProfilePhotos",
+            _ => "User/ProfilePhotos"
         };
 
         var targetDirectory = Path.Combine(_imagesRootPath, roleFolder);
