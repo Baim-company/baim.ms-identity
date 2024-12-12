@@ -4,6 +4,7 @@ using Identity.API.Data.Dtos.Responses;
 using Identity.API.Data.Entities;
 using Identity.API.Services.Abstractions;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 
 public class FileService : IFileService
@@ -35,9 +36,7 @@ public class FileService : IFileService
     }
 
 
-
-
-
+    
     public async Task<ResponseDto<FileDto>> GetFileByIdAsync(Guid userId)
     {
         var user = await _authDbContext.Users.FindAsync(userId);
