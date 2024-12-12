@@ -60,7 +60,7 @@ public class FileService : IFileService
 
 
 
-
+    // app/images
     public async Task<ResponseDto<string>> UpdateFileAsync(Guid userId, IFormFile newFile)
     {
         if (newFile == null || newFile.Length == 0)
@@ -75,10 +75,10 @@ public class FileService : IFileService
 
         var roleFolder = role switch
         {
-            "Admin" => "Admin/ProfilePhotos",
-            "UserAdmin" => "UserAdmin/ProfilePhotos",
-            "Staff" => "Staff/ProfilePhotos",
-            _ => "User/ProfilePhotos"
+            "Admin" => "admin",
+            "UserAdmin" => "userAdmin",
+            "Staff" => "staff",
+            _ => "user"
         };
 
         var targetDirectory = Path.Combine(_imagesRootPath, roleFolder);
@@ -133,7 +133,7 @@ public class FileService : IFileService
             _ => "user-icon.png"
         };
 
-        var defaultFilePath = Path.Combine("DefaultFiles", defaultFileName);
+        var defaultFilePath = Path.Combine("default", defaultFileName);
 
         var filePath = Path.Combine(_imagesRootPath, user.AvatarPath);
         if (File.Exists(filePath))
@@ -165,7 +165,7 @@ public class FileService : IFileService
             _ => "user-icon.png"
         };
 
-        user.AvatarPath = Path.Combine($"DefaultFiles", fileName);
+        user.AvatarPath = Path.Combine($"default", fileName);
         user.AvatarName = fileName;
 
         return user;
