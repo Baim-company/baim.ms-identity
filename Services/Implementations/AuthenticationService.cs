@@ -21,12 +21,14 @@ public class AuthenticationService : IAuthenticationService
     private readonly IMapper _mapper;
     private readonly ITokenService _tokenService;
     private readonly ILogger<AuthenticationService> _logger;
-    private readonly UserManager<ApplicationUser> _userManager; 
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly string _baseImageUrl;
 
 
     public AuthenticationService(
         UserManager<ApplicationUser> userManager, 
-        ITokenService tokenService, 
+        ITokenService tokenService,
+        IConfiguration configuration,
         ILogger<AuthenticationService> logger,
         IMapper mapper)
     {
@@ -34,6 +36,8 @@ public class AuthenticationService : IAuthenticationService
         _userManager = userManager;
         _tokenService = tokenService;
         _logger = logger;
+        _baseImageUrl = configuration["BaseImageUrl"]
+            ?? throw new Exception("BaseImageUrl is not configured");
     }
 
 
@@ -48,6 +52,7 @@ public class AuthenticationService : IAuthenticationService
         var role = roles.FirstOrDefault() ?? "No Role";
 
         var responseUser = _mapper.Map<UserDto>(user);
+        responseUser.AvatarPath = $"{_baseImageUrl}/{user.AvatarPath}".Replace("\\", "/");
         responseUser.Role = role;
             
         return new ResponseDto<UserDto>() { Data = responseUser, Message = "Success ." };
@@ -76,6 +81,7 @@ public class AuthenticationService : IAuthenticationService
 
             var userDto = _mapper.Map<UserDto>(user);
             userDto.Role = role;
+            userDto.AvatarPath = $"{_baseImageUrl}/{user.AvatarPath}".Replace("\\", "/");
 
             userDtos.Add(userDto);
         }

@@ -26,7 +26,7 @@ public class UserProfile : Profile
             .ForMember(dest => dest.ConcurrencyStamp, opt => opt.Ignore());
 
         CreateMap<ApplicationUser, UserDto>()
-            .ForMember(dest => dest.AvatarPath, opt => opt.MapFrom(src => src.AvatarPath))
+            .ForMember(dest => dest.AvatarPath, opt => opt.Ignore())
             .ForMember(dest => dest.BirthDate, opt => opt.MapFrom(src => src.BirthDate))
             .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender))
             .ForMember(dest => dest.Role, opt => opt.Ignore()); // Role будет заполняться вручную
