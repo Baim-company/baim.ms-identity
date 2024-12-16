@@ -6,7 +6,6 @@ namespace Identity.API.Data.Entities;
 
 public class ApplicationUser : IdentityUser<Guid>
 {
-    public string? Id1C { get; set; }
     public string Name { get; set; }
     public string? Surname { get; set; } 
     public string? Patronymic { get; set; }
@@ -35,7 +34,6 @@ public class ApplicationUser : IdentityUser<Guid>
     public ApplicationUser(RegisterUserDto userDto, bool isOldClient)
     {
         Id = Guid.NewGuid();
-        Id1C = userDto.Id1C;
         Name = userDto.Name;
         Surname = userDto.Surname;
         Email = userDto.Email;

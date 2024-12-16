@@ -7,7 +7,6 @@ namespace Identity.API.Data.Dtos.ExternalUsers;
 public class ExternalUserDto
 {
     public Guid Id { get; set; }
-    public string? Id1C { get; set; }
     public string? Position { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Surname { get; set; } = string.Empty;
@@ -52,7 +51,6 @@ public class ExternalUserDto
     public ExternalUserDto(ApplicationUser applicationUser, string role)
     {
         Id = applicationUser.Id;
-        Id1C = applicationUser.Id1C ?? "";
         Name = applicationUser.Name;
         Surname = applicationUser.Surname ?? "";
         Patronymic = applicationUser.Patronymic ?? "";

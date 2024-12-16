@@ -22,7 +22,6 @@ public class AuthDbContext : IdentityDbContext<ApplicationUser, ApplicationRole,
         builder.Entity<ApplicationUser>(entity =>
         {
             entity.HasKey(u => u.Id);
-            entity.Property(u => u.Id1C);
 
             entity.Property(u => u.Name).HasMaxLength(50);
             entity.Property(u => u.Surname).HasMaxLength(50);
@@ -40,7 +39,6 @@ public class AuthDbContext : IdentityDbContext<ApplicationUser, ApplicationRole,
             entity.Property(pi => pi.RefreshToken);
             entity.Property(pi => pi.RefreshTokenExpiryTime);
 
-            entity.Property(pi => pi.AvatarName).HasMaxLength(50);
             entity.Property(pi => pi.AvatarPath).HasMaxLength(200);
         });
     }
