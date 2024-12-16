@@ -29,7 +29,7 @@ public class AuthenticationController : ControllerBase
 
 
 
-    [HttpPost("login")]
+    [HttpPost("Login")]
     public async Task<ActionResult<AccessInfoDto>> LoginAsync([FromBody] LoginDto model)
     {
         var result = await _authenticationService.LoginAsync(model);
@@ -54,7 +54,7 @@ public class AuthenticationController : ControllerBase
 
     
     [Authorize(Policy = "AdminOnly")]
-    [HttpGet("users")]
+    [HttpGet("Users")]
     public async Task<ActionResult<PagedResponse<UserDto>>> GetAllUsers([FromQuery] PaginationParameters paginationParameters)
     {
         var result = await _authenticationService.GetUsersAsync(paginationParameters);
@@ -65,7 +65,7 @@ public class AuthenticationController : ControllerBase
 
 
     [Authorize(Policy = "AdminOnly")]
-    [HttpGet("user/{id}")]
+    [HttpGet("User/{id}")]
     public async Task<ActionResult<UserDto>> GetUser(Guid id)
     {
         var result = await _authenticationService.GetUserAsync(id);

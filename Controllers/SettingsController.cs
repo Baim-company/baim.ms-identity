@@ -22,7 +22,7 @@ public class SettingsController : ControllerBase
     }
 
 
-    [HttpPut("saveChanges")]
+    [HttpPut("SaveChanges")]
     public async Task<ActionResult<string>> Settings([FromBody] SettingsDto model)
     {
         var response = await _settingsService.UpdateUserSettingsAsync(model);
@@ -34,7 +34,7 @@ public class SettingsController : ControllerBase
     }
 
 
-    [HttpPut("change/avatarImage/userId/{userId}")]
+    [HttpPut("Change/AvatarImage/User/Id/{userId}")]
     public async Task<ActionResult<string>> UpdateFile(Guid userId, IFormFile file)
     {
         var result = await _fileService.UpdateFileAsync(userId, file);
@@ -45,7 +45,7 @@ public class SettingsController : ControllerBase
     }
 
 
-    [HttpDelete("avatarImage/userId/{userId}")]
+    [HttpDelete("AvatarImage/User/Id/{userId}")]
     public async Task<ActionResult<string>> DeleteFile(Guid userId)
     {
         var result = await _fileService.DeleteFileAsync(userId);
@@ -57,7 +57,7 @@ public class SettingsController : ControllerBase
 
 
 
-    [HttpGet("avatarImage/userId/{userId}")]
+    [HttpGet("AvatarImage/User/Id/{userId}")]
     public async Task<IActionResult> GetFile(Guid userId)
     {
         var result = await _fileService.GetFileByIdAsync(userId);

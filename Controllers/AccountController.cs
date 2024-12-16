@@ -25,7 +25,7 @@ public class AccountController : ControllerBase
 
 
     [Authorize(Policy = "AdminOnly")]
-    [HttpPost("register")]
+    [HttpPost("Register")]
     public async Task<ActionResult<string>> Create([FromBody] RegisterUserDto model, [FromHeader] bool isOldClient)
     {
         var result = await _accountService.RegisterAsync(model, isOldClient);
@@ -38,7 +38,7 @@ public class AccountController : ControllerBase
 
 
 
-    [HttpGet("confirmEmail")]
+    [HttpGet("ConfirmEmail")]
     public async Task<IActionResult> ConfirmEmail(string token)
     {
         var isConfirmed = await _accountService.ConfirmEmailAsync(token);
@@ -49,7 +49,7 @@ public class AccountController : ControllerBase
 
 
     [Authorize(Policy = "AdminAndStaffOnly")]
-    [HttpPost("sendEmail")]
+    [HttpPost("SendEmail")]
     public async Task<ActionResult<string>> SendLoginDetailsEmail([FromBody] LoginDataDto model)
     {
         var result = await _accountService.SendLoginDetailsEmail(model);
@@ -62,7 +62,7 @@ public class AccountController : ControllerBase
 
 
     [Authorize]
-    [HttpPut("changePassword")]
+    [HttpPut("ChangePassword")]
     public async Task<ActionResult<string>> ChangePassword([FromBody] ChangePasswordDto model)
     {
         var result = await _accountService.ChangePasswordAsync(model);
@@ -75,7 +75,7 @@ public class AccountController : ControllerBase
 
 
     [AllowAnonymous]
-    [HttpPost("forgotPassword")]
+    [HttpPost("ForgotPassword")]
     public async Task<ActionResult<string>> ForgotPassword([FromHeader] string email)
     {
         var result = await _accountService.ForgotPasswordAsync(email);
@@ -87,7 +87,7 @@ public class AccountController : ControllerBase
 
 
     [AllowAnonymous]
-    [HttpPost("resetPassword")]
+    [HttpPost("ResetPassword")]
     public async Task<ActionResult<string>> ResetPassword([FromBody] ResetPasswordDto model)
     {
         var result = await _accountService.ResetPasswordAsync(model);
