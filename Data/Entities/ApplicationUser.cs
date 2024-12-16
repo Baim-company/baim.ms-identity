@@ -24,8 +24,7 @@ public class ApplicationUser : IdentityUser<Guid>
     public DateTime RefreshTokenExpiryTime { get; set; } = DateTime.UtcNow;
 
 
-    public string AvatarName { get; set; } = "user-icon.png";
-    public string AvatarPath { get; set; } = "DefaultFiles\\user-icon.png";
+    public string AvatarPath { get; set; } = "user-icon.png";
 
 
     public ApplicationUser()

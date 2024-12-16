@@ -60,7 +60,6 @@ public class FileService : IFileService
 
 
 
-    // app/images
     public async Task<ResponseDto<string>> UpdateFileAsync(Guid userId, IFormFile newFile)
     {
         if (newFile == null || newFile.Length == 0)
@@ -70,38 +69,24 @@ public class FileService : IFileService
         if (user == null)
             return new ResponseDto<string>("User not found.");
 
-        var roles = await _userManager.GetRolesAsync(user);
-        var role = roles.FirstOrDefault() ?? "User";
 
-        var roleFolder = role switch
-        {
-            "Admin" => "admin",
-            "UserAdmin" => "userAdmin",
-            "Staff" => "staff",
-            _ => "user"
-        };
-
-        var targetDirectory = Path.Combine(_imagesRootPath, roleFolder);
-
-        if (!Directory.Exists(targetDirectory))
-            Directory.CreateDirectory(targetDirectory);
+        if (!Directory.Exists(_imagesRootPath))
+            Directory.CreateDirectory(_imagesRootPath);
 
         var newFileName = $"{Guid.NewGuid()}{Path.GetExtension(newFile.FileName)}";
-        var newFilePath = Path.Combine(targetDirectory, newFileName);
+        var newFilePath = Path.Combine(_imagesRootPath, newFileName);
 
         await using var stream = File.Create(newFilePath);
         await newFile.CopyToAsync(stream);
 
 
-        // Удаление предыдущего файла, если он не является дефолтным
-        if (!IsDefaultImage(user.AvatarName))
+        if (!IsDefaultImage(user.AvatarPath))
         {
             var previousFilePath = Path.Combine(_imagesRootPath, user.AvatarPath);
             if (File.Exists(previousFilePath)) File.Delete(previousFilePath);
         }
 
-        user.AvatarName = newFileName;
-        user.AvatarPath = Path.Combine(roleFolder, newFileName);
+        user.AvatarPath = newFileName;
 
         var result = await _externalUserPhotoSyncService.UpdatePhotoAsync(userId, user.AvatarPath); 
         if (result == null) return new ResponseDto<string>("Error! Failed to update sync image in Personal Account microservice.");
@@ -119,8 +104,8 @@ public class FileService : IFileService
         if (user == null)
             return new ResponseDto<bool>("User not found.", false);
 
-        if (_defaultImages.Contains(user.AvatarName))
-            return new ResponseDto<bool>($"Cannot delete default image: {user.AvatarName}.", false);
+        if (_defaultImages.Contains(user.AvatarPath))
+            return new ResponseDto<bool>($"Cannot delete default image: {user.AvatarPath}.", false);
 
         var roles = await _userManager.GetRolesAsync(user);
         var role = roles.FirstOrDefault() ?? "User";
@@ -133,14 +118,12 @@ public class FileService : IFileService
             _ => "user-icon.png"
         };
 
-        var defaultFilePath = Path.Combine("default", defaultFileName);
 
         var filePath = Path.Combine(_imagesRootPath, user.AvatarPath);
         if (File.Exists(filePath))
             File.Delete(filePath);
 
-        user.AvatarName = defaultFileName;
-        user.AvatarPath = defaultFilePath;
+        user.AvatarPath = defaultFileName;
 
 
         var result = await _externalUserPhotoSyncService.DeletePhotoAsync(userId, user.AvatarPath); 
@@ -165,8 +148,7 @@ public class FileService : IFileService
             _ => "user-icon.png"
         };
 
-        user.AvatarPath = Path.Combine($"default", fileName);
-        user.AvatarName = fileName;
+        user.AvatarPath = fileName;
 
         return user;
     }

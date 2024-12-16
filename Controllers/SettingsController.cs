@@ -35,7 +35,7 @@ public class SettingsController : ControllerBase
 
 
     [HttpPut("avatarImage/userId/{userId}")]
-    public async Task<IActionResult> UpdateFile(Guid userId, IFormFile file)
+    public async Task<ActionResult<string>> UpdateFile(Guid userId, IFormFile file)
     {
         var result = await _fileService.UpdateFileAsync(userId, file);
         if (result.Data == null)
@@ -46,7 +46,7 @@ public class SettingsController : ControllerBase
 
 
     [HttpDelete("avatarImage/userId/{userId}")]
-    public async Task<IActionResult> DeleteFile(Guid userId)
+    public async Task<ActionResult<string>> DeleteFile(Guid userId)
     {
         var result = await _fileService.DeleteFileAsync(userId);
         if (!result.Data)
@@ -58,7 +58,7 @@ public class SettingsController : ControllerBase
 
 
     [HttpGet("avatarImage/userId/{userId}")]
-    public async Task<IActionResult> GetFile(Guid userId)
+    public async Task<ActionResult<FileContentResult>> GetFile(Guid userId)
     {
         var result = await _fileService.GetFileByIdAsync(userId);
         if (result.Data == null)
