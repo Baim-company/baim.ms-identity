@@ -34,7 +34,7 @@ public class SettingsController : ControllerBase
     }
 
 
-    [HttpPut("avatarImage/userId/{userId}")]
+    [HttpPut("change/avatarImage/userId/{userId}")]
     public async Task<ActionResult<string>> UpdateFile(Guid userId, IFormFile file)
     {
         var result = await _fileService.UpdateFileAsync(userId, file);
@@ -58,7 +58,7 @@ public class SettingsController : ControllerBase
 
 
     [HttpGet("avatarImage/userId/{userId}")]
-    public async Task<ActionResult<FileContentResult>> GetFile(Guid userId)
+    public async Task<IActionResult> GetFile(Guid userId)
     {
         var result = await _fileService.GetFileByIdAsync(userId);
         if (result.Data == null)
