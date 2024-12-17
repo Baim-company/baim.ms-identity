@@ -51,7 +51,7 @@ public class SettingsController : ControllerBase
 
     [Authorize(Policy = "UserOnly")]
     [HttpPatch("AvatarImage/User/{userId}")]
-    public async Task<ActionResult<string>> UpdateAvatarAsync([FromRoute] Guid userId, [FromForm] IFormFile file)
+    public async Task<ActionResult<string>> UpdateAvatarAsync(Guid userId, IFormFile file)
     {
         var result = await _fileService.UpdateFileAsync(userId, file);
 
