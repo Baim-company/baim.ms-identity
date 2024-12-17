@@ -49,11 +49,12 @@ public class SettingsController : ControllerBase
         return Ok(response.Message);
     }
 
-
-    [HttpPut("Change/AvatarImage/User/Id/{userId}")]
-    public async Task<ActionResult<string>> UpdateFile(Guid userId, IFormFile file)
+    [Authorize(Policy = "UserOnly")]
+    [HttpPatch("AvatarImage/User/{userId}")]
+    public async Task<ActionResult<string>> UpdateAvatarAsync([FromRoute] Guid userId, [FromForm] IFormFile file)
     {
         var result = await _fileService.UpdateFileAsync(userId, file);
+
         if (result.Data == null)
             return BadRequest(result.Message);
 
