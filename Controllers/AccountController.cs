@@ -48,7 +48,7 @@ public class AccountController : ControllerBase
 
 
 
-    [Authorize(Policy = "AdminAndStaffOnly")]
+    [Authorize(Policy = "StaffOnly")]
     [HttpPost("SendEmail")]
     public async Task<ActionResult<string>> SendLoginDetailsEmail([FromBody] LoginDataDto model)
     {

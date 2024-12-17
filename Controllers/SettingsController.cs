@@ -49,6 +49,8 @@ public class SettingsController : ControllerBase
         return Ok(response.Message);
     }
 
+
+
     [Authorize(Policy = "UserOnly")]
     [HttpPatch("AvatarImage/User/{userId}")]
     public async Task<ActionResult<string>> UpdateAvatarAsync(Guid userId, IFormFile file)
