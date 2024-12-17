@@ -12,14 +12,30 @@ namespace Identity.API.Controllers;
 public class SettingsController : ControllerBase
 {
 
-    private readonly ISettingsService _settingsService;
     private readonly IFileService _fileService;
+    private readonly ISettingsService _settingsService;
 
-    public SettingsController(ISettingsService settingsService, IFileService fileService)
+    public SettingsController(ISettingsService settingsService, 
+        IFileService fileService)
     {
         _settingsService = settingsService;
         _fileService = fileService;
     }
+
+
+
+    [HttpGet("AvatarImage/User/Id/{userId}")]
+    public async Task<IActionResult> GetFile(Guid userId)
+    {
+        var result = await _fileService.GetFileByIdAsync(userId);
+        if (result.Data == null)
+            return NotFound(result.Message);
+
+        var file = result.Data;
+        return File(file.FileContent, file.ContentType, file.FileName);
+    }
+
+
 
 
     [HttpPut("SaveChanges")]
@@ -45,6 +61,8 @@ public class SettingsController : ControllerBase
     }
 
 
+
+
     [HttpDelete("AvatarImage/User/Id/{userId}")]
     public async Task<ActionResult<string>> DeleteFile(Guid userId)
     {
@@ -53,18 +71,5 @@ public class SettingsController : ControllerBase
             return BadRequest(result.Message);
 
         return Ok(result.Message);
-    }
-
-
-
-    [HttpGet("AvatarImage/User/Id/{userId}")]
-    public async Task<IActionResult> GetFile(Guid userId)
-    {
-        var result = await _fileService.GetFileByIdAsync(userId);
-        if (result.Data == null)
-            return NotFound(result.Message);
-
-        var file = result.Data;
-        return File(file.FileContent, file.ContentType, file.FileName);
     }
 }
