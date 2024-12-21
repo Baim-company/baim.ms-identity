@@ -53,7 +53,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /home/Aykhan2004/home/baim/identity
+            cd /home/azureuser/home/baim/identity
             sudo docker compose pull
             sudo docker compose down
             sudo docker compose up -d
