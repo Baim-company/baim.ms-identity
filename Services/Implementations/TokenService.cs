@@ -74,6 +74,7 @@ public class TokenService : ITokenService
                 new Claim("Surname", user.Surname ?? string.Empty),
                 new Claim("MobilePhone", user.PhoneNumber ?? string.Empty),
                 new Claim("Gender", gender),
+                new Claim("HasCompletedSurvey", user.HasCompletedSurvey.ToString()),
                 new Claim("DateOfBirth", user.BirthDate.ToString("yyyy-MM-dd") ?? string.Empty),
                 new Claim("PersonalEmail", user.PersonalEmail ?? string.Empty),
                 new Claim("Patronymic", user.Patronymic ?? string.Empty),
