@@ -111,6 +111,7 @@ public static class DbInitializer
             UserName = adminEmail,
             NormalizedEmail = adminEmail.ToUpper(),
             EmailConfirmed = true,
+            HasCompletedSurvey = true,
             AvatarPath = "admin-icon.png",
         };
 
