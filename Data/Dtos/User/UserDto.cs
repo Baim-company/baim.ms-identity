@@ -21,6 +21,7 @@ public record UserDto
 
     public string PhoneNumber { get; set; }
     public string BusinessPhoneNumber { get; set; }
+    public bool HasCompletedSurvey { get; set; }
 
 
     public UserDto() { }
