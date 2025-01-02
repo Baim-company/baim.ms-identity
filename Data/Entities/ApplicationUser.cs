@@ -24,7 +24,8 @@ public class ApplicationUser : IdentityUser<Guid>
 
 
     public string AvatarPath { get; set; } = "user-icon.png";
-
+    public bool HasCompletedSurvey { get; set; }
+    
 
     public ApplicationUser()
     {
