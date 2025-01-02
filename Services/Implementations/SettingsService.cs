@@ -48,7 +48,7 @@ public class SettingsService : ISettingsService
         if (user == null) throw new IdentityException(IdentityErrorType.UserNotFound, $"User with id: {settingsDto.Id} not found!");
 
         if (!ValidateEmails(settingsDto)) return new ResponseDto<ApplicationUser>("Invalid email format!", null);
-
+        user.HasCompletedSurvey = true;
 
         var roles = await _userManager.GetRolesAsync(user);
 
